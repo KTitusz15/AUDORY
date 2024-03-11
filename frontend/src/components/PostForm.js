@@ -106,6 +106,7 @@ const PostForm = () => {
           {error && <div className="error">{error}</div>}
         </div>
       </form>
+      
     </div>
   )
 }

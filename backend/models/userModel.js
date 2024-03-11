@@ -64,12 +64,12 @@ userSchema.statics.login = async function(email, password) {
 
   const user = await this.findOne({ email })
   if (!user) {
-    throw Error('Incorrect email')
+    throw Error('Invalid login credentials')
   }
 
   const match = await bcrypt.compare(password, user.password)
   if (!match) {
-    throw Error('Incorrect password')
+    throw Error('Invalid login credentials')
   }
 
   return user

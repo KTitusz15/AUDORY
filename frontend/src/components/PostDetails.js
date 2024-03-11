@@ -31,7 +31,7 @@ const PostDetails = ({ post, user_id }) => {
 
   return (
     <div>
-      <div className="static flex flex-col justify-center p-5 my-3 bg-black shadow-[0px_0px_10px_0px_#1e1b4b] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-70 border border-gray-700 text-white w-full self-center transition-transform duration-200 hover:scale-[1.01]">
+      <div className="static flex flex-col justify-center p-5 my-3 bg-black shadow-[0px_0px_10px_0px_#1e1b4b] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-70 border border-gray-700 text-white w-full self-center ">
       <div className="flex flex-row items-center justify-between">
         {/* Details */}
         <div className="flex flex-col justify-between gap-0.5 sm:gap-1 md:gap-1 lg:gap-2 xl:gap-6 items-start w-full h-full pl-2 pr-10">
@@ -50,15 +50,17 @@ const PostDetails = ({ post, user_id }) => {
         {/* Comment */}
         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
 
+        
+
         {/* Like */}
         <div className="flex flex-col items-center gap-1.5">
-          <svg className='hover:fill-white transition-colors hover:cursor-pointer' xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          <p className="text-sm">0</p>
+          <svg className='hover:fill-white transition-colors duration-100 hover:cursor-pointer' xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          <p className="text-sm cursor-default">0</p>
         </div>
 
         {/* Delete */}
         {user.name == post.userName && (
-          <span className="material-symbols-outlined" onClick={handleClick}>delete</span>
+          <span className="material-symbols-outlined hover:text-red-500 transition-colors duration-100 hover:cursor-pointer" onClick={handleClick}>delete</span>
         )}
         
         

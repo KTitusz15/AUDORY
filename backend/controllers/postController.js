@@ -13,7 +13,7 @@ const getUserName = async (userId) => {
   }
 };
 
-// get all workouts
+// get all posts
 const getPosts = async (req, res) => {
   const user_id = req.user._id;
 
@@ -33,7 +33,7 @@ const getPosts = async (req, res) => {
   }
 };
 
-// get a single workout
+// get a single post
 const getPost = async (req, res) => {
   const { id } = req.params;
 
@@ -55,7 +55,7 @@ const getPost = async (req, res) => {
   res.status(200).json(postWithUserName);
 };
 
-// create new workout
+// create new post
 const createPost = async (req, res) => {
   const { title, genre, link, desc } = req.body;
 
@@ -95,7 +95,7 @@ const createPost = async (req, res) => {
   }
 };
 
-// delete a workout
+// delete a post
 const deletePost = async (req, res) => {
   const { id } = req.params;
 
@@ -112,7 +112,7 @@ const deletePost = async (req, res) => {
   res.status(200).json(post);
 };
 
-// update a workout
+// update a post
 const updatePost = async (req, res) => {
   const { id } = req.params;
 

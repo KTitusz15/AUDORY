@@ -6,6 +6,7 @@ import { useAuthContext } from './hooks/useAuthContext'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Publish from './pages/Publish'
 import Background from './components/Background'
 
 
@@ -19,9 +20,14 @@ function App() {
         <Background />
         <div className="pages">
           <Routes>
+          
             <Route 
               path="/" 
               element={user ? <Home /> : <Navigate to="/login" />} 
+            />
+            <Route 
+              path="/publish" 
+              element={user ? <Publish /> : <Navigate to="/publish" />} 
             />
             <Route 
               path="/login" 
@@ -31,6 +37,7 @@ function App() {
               path="/signup" 
               element={!user ? <Signup /> : <Navigate to="/" />} 
             />
+            
           </Routes>
         </div>
       </BrowserRouter>

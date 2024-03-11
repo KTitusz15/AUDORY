@@ -4,7 +4,12 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'xsm': { 'raw': '(min-width: 360px)' },
+        'xsm1': { 'raw': '(min-width: 390px)' }
+      }
+    },
   },
   plugins: [
     require('tailwind-typewriter')({
@@ -17,7 +22,9 @@ module.exports = {
             pauseBetween: 1
         }
     }
-    })
+    }),
+    require("tailwind-gradient-mask-image")
   ],
+  
 }
 

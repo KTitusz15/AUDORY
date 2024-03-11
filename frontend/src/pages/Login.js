@@ -38,7 +38,7 @@ const Login = () => {
           <h1 className='text-6xl text-white font-semibold'>Audory</h1>
           <h1 class="md:hidden type-login mt-3 italic line-clamp-2 text-white text-sm w-[max-content] font-mono"></h1>
           <p class='text-lg font-semibold text-gray-300 my-7'>Welcome Back</p>
-          
+          <p className='text-red-500 pb-2'>{error}</p>
           <div class='relative inline-flex items-center w-full justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 group bg-gradient-to-br from-purple-600 to-indigo-900  py-0.5 px-0.5 rounded-lg mb-4'>
             <span className='flex px-2 w-full relative py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md  text-nowrap'>
               <svg

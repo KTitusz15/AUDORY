@@ -13,8 +13,9 @@ const Navbar = () => {
 
   return (
     <nav
-      id='navbar'
-      className='fixed top-0 z-50 w-full transition-colors duration-300'>
+      
+      className='fixed top-0 z-50 w-full'>
+        <span id='navbar' className='absolute sm:black sm:gradient-mask-b-0 w-full h-full -z-10  transition-colors duration-300 sm:duration-500'></span>
       <div className='px-5 py-5 lg:px-5 lg:pl-3'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center justify-start rtl:justify-end'>
@@ -33,8 +34,8 @@ const Navbar = () => {
           </div>
 
           {user && (
-            <div class='relative inline-block text-left dropdown'>
-              <span class='rounded-md shadow-sm'>
+            <div class='relative inline-block text-left dropdown '>
+              <span class='rounded-md shadow-sm '>
                 <button
                   class='self-center relative inline-flex items-center justify-between p-0.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-indigo-900 group-hover:from-purple-600 group-hover:to-indigo-90'
                   type='button'
