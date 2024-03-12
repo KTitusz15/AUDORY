@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App font-['Poppins']">
       <BrowserRouter>
-        <Background />
+        
         <div className="pages">
           <Routes>
           

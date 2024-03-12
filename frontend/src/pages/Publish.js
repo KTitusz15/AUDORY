@@ -10,6 +10,7 @@ import BottomNavbar from '../components/BottomNavbar';
 
 import Navbar from '../components/Navbar';
 import BubbleNav from '../components/BubbleNav';
+import Background from '../components/Background';
 
 const Publish = () => {
   const { posts, dispatch } = usePostsContext();
@@ -35,6 +36,7 @@ const Publish = () => {
 
   return (
     <div className='publish'>
+      <Background />
       <Navbar />
       <BottomNavbar />
       <BubbleNav />

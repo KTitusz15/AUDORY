@@ -10,6 +10,7 @@ import BottomNavbar from '../components/BottomNavbar'
 
 import Navbar from '../components/Navbar'
 import BubbleNav from '../components/BubbleNav'
+import Background from '../components/Background'
 
 
 
@@ -37,6 +38,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Background />
       <Navbar />
       <BottomNavbar />
       <BubbleNav />
