@@ -179,3 +179,17 @@
 }
 
 
+.background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  background-color:hsla(0,0%,0%,1);
+background-image:
+radial-gradient(at 0% 26%, hsla(289,77%,22%,0.77) 0px, transparent 50%),
+radial-gradient(at 0% 100%, hsla(240,79%,30%,0.55) 0px, transparent 50%),
+radial-gradient(at 98% 48%, hsla(248,79%,30%,0.88) 0px, transparent 50%),
+radial-gradient(at 39% 56%, hsla(183,79%,30%,0.71) 0px, transparent 50%),
+radial-gradient(at 75% 89%, hsla(214,73%,28%,0.73) 0px, transparent 50%),
+    url('./assets/nnnoise2.svg'); /* Replace 'grainy-texture.png' with the path to your grainy texture image */
+}

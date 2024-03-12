@@ -38,7 +38,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <Background />
+      <div className='background'></div>
       <Navbar />
       <BottomNavbar />
       <BubbleNav />
