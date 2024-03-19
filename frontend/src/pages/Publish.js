@@ -35,12 +35,12 @@ const Publish = () => {
   }, [dispatch, user]);
 
   return (
-    <div className='publish'>
-      <Background />
+    <div className='publish background'>
+      
       <Navbar />
       <BottomNavbar />
       <BubbleNav />
-      <div className='absolute flex flex-col justify-around sm:justify-center sm:items-center sm:p-10 w-full h-screen top-52 xsm:top-32 xsm1:top-24'>
+      <div className='absolute flex flex-col justify-around w-full h-screen sm:justify-center sm:items-center sm:p-10 top-52 xsm:top-32 xsm1:top-24'>
         <div className='sm:w-2/4'>
           <PostForm />
         </div>
