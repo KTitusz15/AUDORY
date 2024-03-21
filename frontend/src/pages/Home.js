@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { usePostsContext } from '../hooks/usePostsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { LikesContextProvider } from '../context/LikesContext';
+import { CommentsContextProvider } from '../context/CommentsContext';
 
 // components
 import PostDetails from '../components/PostDetails';
@@ -11,7 +13,7 @@ import BottomNavbar from '../components/BottomNavbar';
 import Navbar from '../components/Navbar';
 import BubbleNav from '../components/BubbleNav';
 import Background from '../components/Background';
-import { LikesContextProvider } from '../context/LikesContext';
+
 
 const Home = () => {
   const { posts, dispatch } = usePostsContext();
@@ -48,12 +50,14 @@ const Home = () => {
 
           {posts &&
             posts.map((post) => (
-              <LikesContextProvider>
-                <PostDetails
-                  key={post._id}
-                  post={post}
-                />
-              </LikesContextProvider>
+              <CommentsContextProvider>
+                <LikesContextProvider>
+                  <PostDetails
+                    key={post._id}
+                    post={post}
+                  />
+                </LikesContextProvider>
+              </CommentsContextProvider>
             ))}
         </div>
       </div>
