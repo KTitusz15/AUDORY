@@ -1,6 +1,7 @@
 import { usePostsContext } from '../hooks/usePostsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLikesContext } from '../hooks/useLikesContext';
+import { motion } from 'framer-motion';
 import LikeCount from './LikeCount';
 
 // date fns
