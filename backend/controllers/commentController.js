@@ -1,54 +1,36 @@
 const Comment = require('../models/commentModel');
+const mongoose = require('mongoose');
 
 const getCommentsById = async (req, res) => {
-  const { post_id } = req.params;
-  Comment.find({ post_id: post_id }, (err, entries) => {
-    if (err) {
-      // Handle error
-      console.error(err);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
-
-    // Handle the case when no entries are found
-    if (!entries || entries.length === 0) {
-      return res
-        .status(404)
-        .json({ message: 'No entries found with the specified post_id' });
-    }
-
-    // Respond with the found entries
-    res.status(200).json(entries);
-  });
+  try {
+    const post_id = req.params.post_id;
+    const comments = await Comment.find({ post_id }).sort({ createdAt: -1 });
+    res.json(comments);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server Error" });
+  }
 };
 
 // create new comment
 const createComment = async (req, res) => {
   const { post_id } = req.params;
-  const { comment_text } = req.body;
+  const { comment, name } = req.body;
 
-  let emptyFields = [];
-
-  if (!comment_text) {
-    emptyFields.push('title');
-  }
-  if (emptyFields.length > 0) {
-    return res
-      .status(400)
-      .json({ error: 'Please fill in all the fields', emptyFields });
-  }
-  if (comment_text.length < 30){
-    return res
-      .status(400)
-      .json({ error: 'Comment should be at least 30 characters long', comment_text });
-  }
-
+  let comment_text_string = String(comment);
+  
+  let text = comment.comments
+  console.log(text)
+  console.log(name)
   // add doc to db
   try {
     const user_id = req.user._id;
+    
     const comment = await Comment.create({
       user_id,
+      name,
       post_id,
-      comment_text
+      text
     });
     res.status(200).json(comment);
   } catch (error) {

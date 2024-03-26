@@ -1,7 +1,7 @@
 import { CommentsContext } from '../context/CommentsContext'
 import { useContext } from 'react'
 
-export const useLikesContext = () => {
+export const useCommentsContext = () => {
   const context = useContext(CommentsContext)
 
   if (!context) {

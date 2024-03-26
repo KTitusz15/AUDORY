@@ -6,13 +6,11 @@ export const commentsReducer = (state, action) => {
   switch (action.type) {
     case 'SET_COMMENTS':
       return {
-        comments: [action.payload, ...state.comments],
+        comments: action.payload,
       };
     case 'CREATE_COMMENT':
       return {
-        ...state,
-        likes: state.likes + 1,
-        liked: true,
+        comments: [action.payload, ...state.comments]
       };
     case 'DELETE_COMMENT':
       return {

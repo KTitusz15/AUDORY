@@ -19,9 +19,9 @@ router.get('/:post_id', getCommentsById);
 router.post('/:post_id', createComment);
 
 // DELETE a comment
-router.delete('/:post_id', deleteComment);
+router.delete('/:id', deleteComment);
 
 // UPDATE a comment
-router.patch('/:post_id', editComment);
+router.patch('/:id', editComment);
 
 module.exports = router;

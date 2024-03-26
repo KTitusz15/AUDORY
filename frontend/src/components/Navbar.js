@@ -43,24 +43,24 @@ const Navbar = () => {
           <div className='flex justify-center items-center gap-5'>
           {!isPathPublish && (
             <Link to="/publish">
-              <div class='relative sm:inline-flex  group hidden'>
-              <div class='absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#7338c6] via-[#1432b8] to-[#41a2c2] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt'></div>
-              <a
-                href='/publish'
+              <div className='relative sm:inline-flex  group hidden'>
+              <div className='absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#7338c6] via-[#1432b8] to-[#41a2c2] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt'></div>
+              <span
+                
                 title='Upload your idea'
-                class='relative inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white transition-all duration-200 bg-gray-900 rounded-xl '
+                className='relative inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white transition-all duration-200 bg-gray-900 rounded-xl '
                 role='button'>
                 Upload your idea
-              </a>
+              </span>
             </div>
             </Link>
           )}
             <div>
               {user && (
-                <div class='relative inline-block text-left dropdown '>
-                  <span class='rounded-md shadow-sm '>
+                <div className='relative inline-block text-left dropdown '>
+                  <span className='rounded-md shadow-sm '>
                     <button
-                      class='self-center relative inline-flex items-center justify-between p-0.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-indigo-900 group-hover:from-purple-600 group-hover:to-indigo-90'
+                      className='self-center relative inline-flex items-center justify-between p-0.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-indigo-900 group-hover:from-purple-600 group-hover:to-indigo-90'
                       type='button'
                       aria-haspopup='true'
                       aria-expanded='true'
@@ -68,7 +68,7 @@ const Navbar = () => {
                       <span className='flex bg-gray-900 justify-between w-full gap-4 relative px-4 py-2.5 transition-all ease-in duration-75  rounded-md group-hover:bg-opacity-0'>
                         {user.name}
                         <svg
-                          class='w-5 h-5'
+                          className='w-5 h-5'
                           viewBox='0 0 20 20'
                           fill='currentColor'>
                           <path
@@ -79,39 +79,39 @@ const Navbar = () => {
                       </span>
                     </button>
                   </span>
-                  <div class='opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95'>
+                  <div className='opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95'>
                     <div
-                      class='absolute right-0 w-56 mt-2 origin-top-right [background:radial-gradient(125%_125%_at_50%_10%,#000_55%,#4c00a3_100%)] border border-gray-700 text-white divide-y divide-gray-400 rounded-md shadow-2xl outline-none'
+                      className='absolute right-0 w-56 mt-2 origin-top-right [background:radial-gradient(125%_125%_at_50%_10%,#000_55%,#4c00a3_100%)] border border-gray-700 text-white divide-y divide-gray-400 rounded-md shadow-2xl outline-none'
                       aria-labelledby='headlessui-menu-button-1'
                       id='headlessui-menu-items-117'
                       role='menu'>
-                      <div class='px-4 py-3'>
-                        <p class='text-sm leading-5'>Signed in as</p>
-                        <p class='text-xs font-medium leading-5 text-gray-400 truncate'>
+                      <div className='px-4 py-3'>
+                        <p className='text-sm leading-5'>Signed in as</p>
+                        <p className='text-xs font-medium leading-5 text-gray-400 truncate'>
                           {user.email}
                         </p>
                       </div>
-                      <div class='py-1'>
+                      <div className='py-1'>
                         <a
-                          href='javascript:void(0)'
-                          tabindex='0'
-                          class='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
+                          href='/profile'
+                          tabIndex='0'
+                          className='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
                           role='menuitem'>
                           Profile
                         </a>
                         <a
-                          href='javascript:void(0)'
-                          tabindex='1'
-                          class='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
+                          href='/settings'
+                          tabIndex='1'
+                          className='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
                           role='menuitem'>
                           Settings
                         </a>
                       </div>
-                      <div class='py-1'>
+                      <div className='py-1'>
                         <button
                           onClick={handleClick}
-                          tabindex='3'
-                          class='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
+                          tabIndex='3'
+                          className='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
                           role='menuitem'>
                           Sign out
                         </button>

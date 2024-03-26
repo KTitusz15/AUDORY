@@ -3,6 +3,7 @@ import { usePostsContext } from '../hooks/usePostsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { LikesContextProvider } from '../context/LikesContext';
 import { CommentsContextProvider } from '../context/CommentsContext';
+import { motion } from 'framer-motion';
 
 // components
 import PostDetails from '../components/PostDetails';
@@ -38,7 +39,10 @@ const Home = () => {
   }, [dispatch, user]);
 
   return (
-    <div className='home'>
+    <div 
+    
+    className='home'>
+      
       <div className='background'></div>
       <Navbar />
       <BottomNavbar />

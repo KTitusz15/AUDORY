@@ -20,7 +20,7 @@ const BottomNavbar = () => {
         <div className='inline-flex flex-col items-center justify-center'>
           <a
             href='/publish'
-            class='self-center w-min relative inline-flex items-center justify-between p-0.5 overflow-hidden text-sm font-medium text-white rounded-full group bg-gradient-to-br from-purple-600 to-indigo-900 group-hover:from-purple-600 group-hover:to-indigo-90'>
+            className='self-center w-min relative inline-flex items-center justify-between p-0.5 overflow-hidden text-sm font-medium text-white rounded-full group bg-gradient-to-br from-purple-600 to-indigo-900 group-hover:from-purple-600 group-hover:to-indigo-90'>
             <span className='flex bg-gray-900 justify-center relative p-2.5 xl:p-4 transition-all ease-in duration-75 rounded-full group-hover:bg-opacity-0'>
               <svg
                 className='w-4 h-4 text-white'
