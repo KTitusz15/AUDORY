@@ -20,8 +20,7 @@ const createComment = async (req, res) => {
   let comment_text_string = String(comment);
   
   let text = comment.comments
-  console.log(text)
-  console.log(name)
+  
   // add doc to db
   try {
     const user_id = req.user._id;
