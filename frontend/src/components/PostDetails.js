@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import CommentForm from './CommentForm';
 import Comment from './Comment';
 
@@ -17,9 +17,12 @@ const PostDetails = ({ post }) => {
   const { comments, dispatch: commentDispatch } = useCommentsContext();
   const { user } = useAuthContext();
 
+
   const [likeCount, setLikeCount] = useState(0);
 
   const [isExpanded, setExpanded] = useState(false);
+
+  
 
   useEffect(() => {
     const fetchPostLikeStatus = async () => {
@@ -83,32 +86,42 @@ const PostDetails = ({ post }) => {
   }, [user, post._id]);
 
   const handleLike = async () => {
-    if (!liked) {
-      const response = await fetch(`/api/likes/${post._id}`, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      const json = await response.json();
-
-      if (response.ok) {
-        likesDispatch({ type: 'CREATE_LIKE', payload: json });
+    try {
+      let updatedLikes;
+      if (!liked) {
+        const response = await fetch(`/api/likes/${post._id}`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        const json = await response.json();
+  
+        if (response.ok) {
+          updatedLikes = likeCount + 1;
+          setLikeCount(updatedLikes); // Update like count locally
+          likesDispatch({ type: 'CREATE_LIKE', payload: json });
+        }
+      } else {
+        const response = await fetch(`/api/likes/${post._id}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        const json = await response.json();
+  
+        if (response.ok) {
+          updatedLikes = likeCount - 1;
+          setLikeCount(updatedLikes); // Update like count locally
+          likesDispatch({ type: 'DELETE_LIKE', payload: json });
+        }
       }
-    } else {
-      const response = await fetch(`/api/likes/${post._id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
-      const json = await response.json();
-
-      if (response.ok) {
-        likesDispatch({ type: 'DELETE_LIKE', payload: json });
-      }
+    } catch (error) {
+      console.error('Error handling like:', error);
     }
   };
+  
 
   const handleDelete = async () => {
     if (!user) {
@@ -132,15 +145,18 @@ const PostDetails = ({ post }) => {
     setExpanded(!isExpanded);
 
     const postElements = document.querySelectorAll('.post');
+    
     if (!isExpanded) {
       postElements.forEach((element) => {
         element.classList.add('hidden');
         element.classList.add('opacity-0');
+        window.scrollTo(0, 0)
       });
     } else {
       postElements.forEach((element) => {
         element.classList.remove('hidden');
         element.classList.remove('opacity-0');
+        
       });
     }
   };

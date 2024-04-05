@@ -2,8 +2,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import logo from '../assets/logo.png';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 
 const Navbar = () => {
@@ -12,6 +10,7 @@ const Navbar = () => {
 
   const location = useLocation();
   const isPathPublish = location.pathname === '/publish';
+  const isPathFeedback = location.pathname === '/feedback';
 
   const handleClick = () => {
     logout();
@@ -24,7 +23,7 @@ const Navbar = () => {
         className='absolute w-full h-full transition-colors duration-300 sm:black sm:gradient-mask-b-0 -z-10 sm:duration-500'></span>
       <div className='px-5 py-5 lg:px-5 lg:pl-3'>
         <div className='flex items-center justify-between'>
-          <div className='flex items-center justify-start rtl:justify-end'>
+          <div className='flex items-center justify-start gap-5'>
             <Link
               to='/'
               className='flex items-center'>
@@ -37,30 +36,33 @@ const Navbar = () => {
                 Audory
               </span>
             </Link>
+            {!isPathFeedback && (
+              <div className='hidden sm:flex text-gray-300 hover:text-white hover:scale-[101.5%] active:scale-95 transition-all'>
+                <Link to='/feedback'>Feedback</Link>
+              </div>
+            )}
           </div>
-          
-          
+
           <div className='flex justify-center items-center gap-5'>
-          {!isPathPublish && (
-            <Link to="/publish">
-              <div className='relative sm:inline-flex  group hidden'>
-              <div className='absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#7338c6] via-[#1432b8] to-[#41a2c2] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt'></div>
-              <span
-                
-                title='Upload your idea'
-                className='relative inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white transition-all duration-200 bg-gray-900 rounded-xl '
-                role='button'>
-                Upload your idea
-              </span>
-            </div>
-            </Link>
-          )}
+            {!isPathPublish && (
+              <Link to='/publish'>
+                <div className='relative sm:inline-flex  group hidden'>
+                  <div className='absolute transition-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#7338c6] via-[#1432b8] to-[#41a2c2] rounded-md blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt'></div>
+                  <span
+                    title='Upload your idea'
+                    className='relative inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white transition-all duration-200 bg-gray-900 rounded-xl '
+                    role='button'>
+                    Upload your idea
+                  </span>
+                </div>
+              </Link>
+            )}
             <div>
               {user && (
                 <div className='relative inline-block text-left dropdown '>
                   <span className='rounded-md shadow-sm '>
                     <button
-                      className='self-center relative inline-flex items-center justify-between p-0.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-indigo-900 group-hover:from-purple-600 group-hover:to-indigo-90'
+                      className='self-center relative inline-flex items-center justify-between p-0.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 via-cyan-800 to-indigo-800 group-hover:from-purple-600/40 group-hover:to-indigo-900/40'
                       type='button'
                       aria-haspopup='true'
                       aria-expanded='true'
@@ -81,7 +83,7 @@ const Navbar = () => {
                   </span>
                   <div className='opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95'>
                     <div
-                      className='absolute right-0 w-56 mt-2 origin-top-right [background:radial-gradient(125%_125%_at_50%_10%,#000_55%,#4c00a3_100%)] border border-gray-700 text-white divide-y divide-gray-400 rounded-md shadow-2xl outline-none'
+                      className='absolute right-0 w-56 mt-2 origin-top-right bg-gray-950/50 backdrop-blur-lg border border-gray-700 text-white divide-y divide-gray-400 rounded-md shadow-2xl outline-none'
                       aria-labelledby='headlessui-menu-button-1'
                       id='headlessui-menu-items-117'
                       role='menu'>
@@ -118,6 +120,23 @@ const Navbar = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+              )}
+              {!user && (
+                <div className='relative inline-block text-left dropdown '>
+                  <span className='rounded-md shadow-sm '>
+                    <Link
+                      to='/login'
+                      className='self-center relative inline-flex items-center justify-between p-0.5 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 via-cyan-800 to-indigo-800 group-hover:from-purple-600/40 group-hover:to-indigo-900/40'
+                      type='button'
+                      aria-haspopup='true'
+                      aria-expanded='true'
+                      aria-controls='headlessui-menu-items-117'>
+                      <span className='flex bg-gray-900 justify-between w-full gap-4 relative px-4 py-2.5 transition-all ease-in duration-75  rounded-md group-hover:bg-opacity-0'>
+                        Log in
+                      </span>
+                    </Link>
+                  </span>
                 </div>
               )}
             </div>

@@ -33,6 +33,21 @@ const getPosts = async (req, res) => {
   }
 };
 
+const getPostsByUserId = async (req, res) => {
+  const user_id = req.user._id; // Assuming user_id is in req.body
+
+  try {
+    const posts = await Post.find({ user_id }).sort({ createdAt: -1 });
+
+    
+
+    res.status(200).json(posts);
+  } catch (error) {
+    console.error("Error retrieving posts:", error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
 // get a single post
 const getPost = async (req, res) => {
   const { id } = req.params;
@@ -136,6 +151,7 @@ const updatePost = async (req, res) => {
 
 module.exports = {
   getPosts,
+  getPostsByUserId,
   getPost,
   createPost,
   deletePost,

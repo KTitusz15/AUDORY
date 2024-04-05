@@ -11,6 +11,7 @@ import BottomNavbar from '../components/BottomNavbar';
 import Navbar from '../components/Navbar';
 import BubbleNav from '../components/BubbleNav';
 import Background from '../components/Background';
+import Footer from '../components/Footer';
 
 const Publish = () => {
   const { posts, dispatch } = usePostsContext();
@@ -18,32 +19,16 @@ const Publish = () => {
 
   useEffect(() => {
     document.title = 'Audory';
-    const fetchPosts = async () => {
-      const response = await fetch('/api/posts', {
-        headers: { Authorization: `Bearer ${user.token}` },
-      });
-      const json = await response.json();
-
-      if (response.ok) {
-        dispatch({ type: 'SET_POSTS', payload: json });
-      }
-    };
-
-    if (user) {
-      fetchPosts();
-    }
-  }, [dispatch, user]);
+  });
 
   return (
-    <div className='publish background'>
-      
+    <div className='publish flex flex-col justify-center items-center h-screen'>
+      <div className='background-publish'></div>
+
       <Navbar />
-      <BottomNavbar />
-      <BubbleNav />
-      <div className='absolute flex flex-col justify-around w-full h-screen sm:justify-center sm:items-center sm:p-10 top-52 xsm:top-32 xsm1:top-24'>
-        <div className='sm:w-2/4'>
-          <PostForm />
-        </div>
+
+      <div className='pt-24 mt-24 mb-36 w-11/12 md:w-10/12 lg:w-8/12 xl:6/12'>
+      <PostForm />
       </div>
     </div>
   );

@@ -5,165 +5,6 @@
 /* Google font Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
-/* Background css */
-.animation-container {
-  background: black;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: -10;
-}
-
-.shape1 {
-  position: absolute;
-  top: 42%;
-  left: 70%;
-  width: 25rem;
-  height: 25rem;
-  background: rgb(75, 13, 120);
-  border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
-  filter: blur(6rem);
-  animation: shape1 20s infinite;
-}
-
-@keyframes shape1 {
-  0% {
-    transform: translate(0, 0);
-    border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
-  }
-  25% {
-    transform: translate(-55%, -10%);
-    border-radius: 28% 72% 81% 19% / 78% 25% 75% 22%;
-    height: 50rem;
-    width: 80rem;
-  }
-  50% {
-    transform: translate(-90%, -10%);
-    border-radius: 60% 40% 0% 100% / 1% 74% 26% 99%;
-  }
-  75% {
-    transform: translate(-30%, -10%);
-    border-radius: 0% 100% 100% 0% / 0% 100% 100% 0%;
-    height: 30rem;
-    width: 45rem;
-  }
-  100% {
-    transform: translate(0%, 0%);
-    border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
-  }
-}
-
-.shape2 {
-  position: absolute;
-  top: 33%;
-  left: 40%;
-  width: 35rem;
-  height: 25rem;
-  background: rgb(49, 60, 126);
-  border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
-  filter: blur(12rem);
-  animation: shape2 35s infinite;
-}
-
-@keyframes shape2 {
-  0% {
-    transform: translate(0, 0);
-    border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
-  }
-  25% {
-    transform: translate(-55%, -55%);
-    border-radius: 28% 72% 81% 19% / 78% 25% 75% 22%;
-    height: 30rem;
-    width: 30rem;
-  }
-  50% {
-    transform: translate(-70%, -70%);
-    border-radius: 60% 40% 0% 100% / 1% 74% 26% 99%;
-  }
-  75% {
-    transform: translate(-30%, -30%);
-    border-radius: 0% 100% 100% 0% / 0% 100% 100% 0%;
-  }
-  100% {
-    transform: translate(0%, 0%);
-    border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
-  }
-}
-
-.shape3 {
-  position: absolute;
-  top: 20%;
-  left: 80%;
-  width: 20rem;
-  height: 20rem;
-  background: rgb(73, 114, 152);
-  border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
-  filter: blur(14rem);
-  animation: shape3 35s infinite;
-}
-
-@keyframes shape3 {
-  0% {
-    transform: translate(0, 0);
-    border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
-  }
-  25% {
-    transform: translate(-125%, -25%);
-    border-radius: 28% 72% 81% 19% / 78% 25% 75% 22%;
-    height: 25rem;
-    width: 25rem;
-  }
-  50% {
-    transform: translate(-90%, -35%);
-    border-radius: 60% 40% 0% 100% / 1% 74% 26% 99%;
-  }
-  75% {
-    transform: translate(-30%, -40%);
-    border-radius: 0% 100% 100% 0% / 0% 100% 100% 0%;
-  }
-  100% {
-    transform: translate(0%, 0%);
-    border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
-  }
-}
-
-.shape4 {
-  position: absolute;
-  top: 42%;
-  left: 70%;
-  width: 25rem;
-  height: 25rem;
-  background: rgb(30, 52, 119);
-  border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
-  filter: blur(5rem);
- 
-}
-
-.shape5 {
-  position: absolute;
-  top: 33%;
-  left: 40%;
-  width: 35rem;
-  height: 25rem;
-  background: rgb(39, 118, 137);
-  border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
-  filter: blur(5rem);
-  
-}
-
-.shape6 {
-  position: absolute;
-  top: 20%;
-  left: 80%;
-  width: 25rem;
-  height: 25rem;
-  background: rgb(72, 32, 136);
-  border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
-  filter: blur(5rem);
-  
-  
-}
-
 /* Profile dropdown */
 .dropdown:focus-within .dropdown-menu {
   opacity:1;
@@ -191,5 +32,80 @@ radial-gradient(at 0% 100%, hsla(240,79%,30%,0.55) 0px, transparent 50%),
 radial-gradient(at 98% 48%, hsla(248,79%,30%,0.88) 0px, transparent 50%),
 radial-gradient(at 39% 56%, hsla(183,79%,30%,0.71) 0px, transparent 50%),
 radial-gradient(at 75% 89%, hsla(214,73%,28%,0.73) 0px, transparent 50%)
+    /* url('./assets/nnnoise2.svg') */;
+}
+
+.background-error {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  background-color:hsla(0,0%,0%,1);
+background-image:
+radial-gradient(at 0% 0%, hsla(289,77%,22%,0.37) 0px, transparent 20%),
+radial-gradient(at 0% 100%, hsla(240,79%,30%,0.55) 0px, transparent 50%),
+radial-gradient(at 50% 50%, hsla(248,79%,30%,0.38) 0px, transparent 80%),
+radial-gradient(at 100% 100%, hsla(183,79%,30%,0.31) 0px, transparent 40%),
+radial-gradient(at 100% 0%, hsla(249, 49%, 46%, 0.31) 0px, transparent 50%)
+    /* url('./assets/nnnoise2.svg') */;
+}
+
+
+.background-publish {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  background-color:hsla(0,0%,0%,1);
+background-image:
+radial-gradient(at 0% 0%, hsla(289,77%,22%,0.37) 0px, transparent 20%),
+radial-gradient(at 0% 100%, hsla(240,79%,30%,0.55) 0px, transparent 50%),
+radial-gradient(at 50% 50%, hsla(248,79%,30%,0.38) 0px, transparent 80%),
+radial-gradient(at 100% 100%, hsla(183,79%,30%,0.31) 0px, transparent 40%),
+radial-gradient(at 100% 0%, hsla(249, 49%, 46%, 0.31) 0px, transparent 50%)
+    /* url('./assets/nnnoise2.svg') */;
+}
+
+.background-home {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  background-color:hsla(0,0%,0%,1);
+background-image:
+radial-gradient(at 0% 0%, hsla(289,77%,22%,0.57) 0px, transparent 30%),
+radial-gradient(at 0% 100%, hsla(240,79%,30%,0.55) 0px, transparent 50%),
+radial-gradient(at 25% 50%, hsla(288, 79%, 30%, 0.48) 0px, transparent 70%),
+radial-gradient(at 100% 100%, hsla(183,79%,30%,0.31) 0px, transparent 40%),
+radial-gradient(at 100% 0%, hsla(208, 49%, 46%, 0.41) 0px, transparent 20%)
+    /* url('./assets/nnnoise2.svg') */;
+}
+
+.background-login {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  background-color:hsla(0,0%,0%,1);
+background-image:
+radial-gradient(at 25% 0%, hsla(273, 77%, 22%, 0.37) 0px, transparent 30%),
+radial-gradient(at 100% 0%, hsla(240,79%,30%,0.55) 0px, transparent 50%),
+radial-gradient(at 25% 100%, hsla(255, 79%, 30%, 0.48) 0px, transparent 70%),
+radial-gradient(at 100% 100%, hsla(183,79%,30%,0.51) 0px, transparent 40%)
+    /* url('./assets/nnnoise2.svg') */;
+}
+
+.background-profile {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  background-color:hsla(0,0%,0%,1);
+background-image:
+radial-gradient(at 0% 0%, hsla(289,77%,22%,0.37) 0px, transparent 20%),
+radial-gradient(at 0% 100%, hsla(240,79%,30%,0.55) 0px, transparent 50%),
+radial-gradient(at 50% 50%, hsla(248,79%,30%,0.38) 0px, transparent 80%),
+radial-gradient(at 100% 100%, hsla(183,79%,30%,0.31) 0px, transparent 40%),
+radial-gradient(at 100% 0%, hsla(249, 49%, 46%, 0.31) 0px, transparent 50%)
     /* url('./assets/nnnoise2.svg') */;
 }

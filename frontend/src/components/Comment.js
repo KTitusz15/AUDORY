@@ -1,11 +1,13 @@
 import { formatDistanceToNow } from 'date-fns';
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useCommentsContext } from '../hooks/useCommentsContext';
 
 const Comment = ({ comment }) => {
   const { user } = useAuthContext();
   const { comments, dispatch: commentDispatch } = useCommentsContext();
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedText, setEditedText] = useState(comment.text);
 
   const handleDelete = async () => {
     if (!user) {
@@ -25,16 +27,68 @@ const Comment = ({ comment }) => {
     }
   };
 
+  const handleEdit = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveEdit = async () => {
+    // Handle saving the edited comment
+    // Send a request to your backend API to update the comment
+    try {
+      const response = await fetch(`/api/comments/${comment._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+        body: JSON.stringify({ text: editedText }),
+      });
+      if (response.ok) {
+        const updatedComment = await response.json();
+        // Update the comment in the local state
+        commentDispatch({ type: 'EDIT_COMMENT', payload: updatedComment });
+        setIsEditing(false);
+      } else {
+        // Handle error
+        console.error('Failed to update comment');
+      }
+    } catch (error) {
+      console.error('Error updating comment:', error);
+    }
+  };
+
   return (
     <div className='relative flex flex-col p-4 gap-2 border-gray-600 border md:mx-5 my-5 rounded-xl md:w-3/4 shadow-[0px_0px_10px_0px_#1e1b4b]'>
       <p className=''>{comment.name}</p>
-      <p className=''>{comment.text}</p>
+      {isEditing ? (
+        <div className='flex flex-row justify-center items-center gap-3 mb-5'>
+        <textarea
+          value={editedText}
+          onChange={(e) => setEditedText(e.target.value)}
+          rows={3}
+          columns={150}
+          className='resize-y bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-900 focus:border-indigo-900 block w-full p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-900 dark:focus:border-indigo-900'
+        />
+        {isEditing && (
+        <div className='flex flex-col justify-around pl-3 pr-2'>
+          <button onClick={handleSaveEdit} className='text-gray-500 hover:text-gray-700 material-symbols-rounded'>
+            done
+          </button>
+          <button onClick={() => setIsEditing(false)} className='text-gray-500 hover:text-gray-700 material-symbols-rounded'>
+            close
+          </button>
+        </div>
+      )}
+        </div>
+      ) : (
+        <p className=''>{comment.text}</p>
+      )}
       <p className='text-xs text-gray-400 text-right'>
         {formatDistanceToNow(new Date(comment.createdAt), {
           addSuffix: true,
         })}
       </p>
-      {/* Delete */}
+      
       <div>
         {user && user.name == comment.name && (
           <div className='absolute top-2 right-2 inline-block text-left dropdown '>
@@ -59,6 +113,7 @@ const Comment = ({ comment }) => {
                     <div className=''>
                   <button
                     tabIndex='1'
+                    onClick={handleEdit}
                     className='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
                     role='menuitem'>
                     Edit
@@ -78,6 +133,8 @@ const Comment = ({ comment }) => {
           </div>
         )}
       </div>
+
+
     </div>
   );
 };

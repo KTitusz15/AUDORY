@@ -22,6 +22,6 @@ router.post('/:post_id', createComment);
 router.delete('/:id', deleteComment);
 
 // UPDATE a comment
-router.patch('/:id', editComment);
+router.put('/:id', editComment);
 
 module.exports = router;

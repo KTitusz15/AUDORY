@@ -16,13 +16,12 @@ export const commentsReducer = (state, action) => {
       return {
         comments: state.comments.filter((w) => w._id !== action.payload._id),
       };
-    case 'EDIT_COMMENT':
-      return {
-        ...state,
-        comments: state.comments.map((comment) =>
-          comment._id === action.payload._id ? action.payload : comment
-        ),
-      };
+      case 'EDIT_COMMENT':
+        return {
+          comments: state.comments.map((comment) =>
+            comment._id === action.payload._id ? action.payload : comment
+          ),
+        };
     default:
       return state;
   }

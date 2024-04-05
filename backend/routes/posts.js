@@ -3,8 +3,10 @@ const {
   createPost,
   getPosts,
   getPost,
+  getPostsByUserId,
   deletePost,
-  updatePost
+  updatePost,
+  
 } = require('../controllers/postController')
 const requireAuth = require('../middleware/requireAuth')
 
@@ -19,6 +21,9 @@ router.get('/', getPosts)
 
 //GET a single post
 router.get('/:id', getPost)
+
+//GET all posts with user id
+router.get('/user/:username', getPostsByUserId)
 
 // POST a new post
 router.post('/', createPost)
