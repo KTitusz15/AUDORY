@@ -59,7 +59,7 @@ const Comment = ({ comment }) => {
 
   return (
     <div className='relative flex flex-col p-4 gap-2 border-gray-600 border md:mx-5 my-5 rounded-xl md:w-3/4 shadow-[0px_0px_10px_0px_#1e1b4b]'>
-      <p className=''>{comment.name}</p>
+      <p className='font-semibold'>{comment.name}</p>
       {isEditing ? (
         <div className='flex flex-row justify-center items-center gap-3 mb-5'>
         <textarea
@@ -106,7 +106,7 @@ const Comment = ({ comment }) => {
             </button>
             <div className='opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95'>
               <div
-                className='absolute right-0 w-24 mt-2 origin-top-right [background:radial-gradient(125%_125%_at_50%_10%,#000_55%,#4c00a3_100%)] border border-gray-700 text-white divide-y divide-gray-400/35 rounded-md shadow-2xl outline-none'
+                className='absolute right-0 w-24 mt-2 origin-top-right bg-gray-950/50 backdrop-blur-lg border border-gray-700 text-white divide-y divide-gray-400 rounded-md shadow-2xl outline-none'
                 aria-labelledby='headlessui-menu-button-1'
                 id='headlessui-menu-items-117'
                 role='menu'>

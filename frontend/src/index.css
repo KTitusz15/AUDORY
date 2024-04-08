@@ -109,3 +109,18 @@ radial-gradient(at 100% 100%, hsla(183,79%,30%,0.31) 0px, transparent 40%),
 radial-gradient(at 100% 0%, hsla(249, 49%, 46%, 0.31) 0px, transparent 50%)
     /* url('./assets/nnnoise2.svg') */;
 }
+
+.background-loading {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -10;
+  background-color:hsla(0,0%,0%,1);
+background-image:
+radial-gradient(at 0% 0%, hsla(289,77%,22%,0.37) 0px, transparent 20%),
+radial-gradient(at 0% 100%, hsla(240,79%,30%,0.55) 0px, transparent 50%),
+radial-gradient(at 50% 50%, hsla(248,79%,30%,0.38) 0px, transparent 80%),
+radial-gradient(at 100% 100%, hsla(183,79%,30%,0.31) 0px, transparent 40%),
+radial-gradient(at 100% 0%, hsla(249, 49%, 46%, 0.31) 0px, transparent 50%)
+    /* url('./assets/nnnoise2.svg') */;
+}

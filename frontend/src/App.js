@@ -8,6 +8,8 @@ import Publish from './pages/Publish';
 import Feedback from './pages/Feedback';
 import Error from './pages/Error';
 import Profile from './pages/Profile';
+import Post from './pages/Post';
+import Loading from './pages/Loading';
 
 
 function App() {
@@ -28,6 +30,10 @@ function App() {
             <Route
               path='/feedback'
               element={user || sessionStorage.getItem('loggedIn') === 'true' ? <Feedback /> : <Navigate to='/login' />}
+            />
+            <Route
+              path='/post/:post_id'
+              element={user || sessionStorage.getItem('loggedIn') === 'true' ? <Post /> : <Navigate to='/login' />}
             />
             <Route
               path='/publish'

@@ -115,7 +115,7 @@ const Home = () => {
       {/* <!-- End Card Section --> */}
 
       {/* Section */}
-      <div className='flex flex-col gap-3 w-100 h-auto bg-gray-900/30 shadow-lg border-b border-t border-gray-800 px-24 py-10 my-5'>
+      <div className='flex flex-col gap-3 w-100 h-auto bg-gray-900/30 shadow-lg border-b border-t border-gray-800 px-5 sm:p-24 py-10 my-5'>
         <h1 className='text-gray-300 font-semibold text-2xl text-center mb-3'>Connect with the community</h1>
         <span className='text-gray-400 text-lg text-center'>Dive into a variety of fresh tunes crafted by our community members. Feel free to share your personal thoughts and offer constructive feedback to support each other's musical journey.</span>
         <span className='text-gray-400 text-lg text-center'>Join the community by uploading your own tracks and discover what fellow music enthusiasts think about your creations!</span>
