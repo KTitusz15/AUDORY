@@ -4,13 +4,39 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { useCommentsContext } from '../hooks/useCommentsContext';
 
 const Comment = ({ comment }) => {
-  const { user } = useAuthContext();
+  const { user, dispatch: authDispatch } = useAuthContext()
   const { comments, dispatch: commentDispatch } = useCommentsContext();
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(comment.text);
 
   const handleDelete = async () => {
     if (!user) {
+      return;
+    }
+
+    // Remove 10 credits from the user's account
+    try {
+      const response = await fetch(`/api/user/${user._id}/subtract-credits`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        
+        return;
+      }else{
+        authDispatch({ type: 'SET_CREDITS', payload: json.user.credits });
+        
+      }
+      
+    } catch (error) {
+      console.error('Error subtracting credits:', error);
+      
       return;
     }
 

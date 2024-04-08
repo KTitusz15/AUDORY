@@ -16,10 +16,15 @@ import BubbleNav from '../components/BubbleNav';
 import Background from '../components/Background';
 import Loading from './Loading';
 
+
+
 const Feedback = () => {
   const { posts, dispatch } = usePostsContext();
   const { user } = useAuthContext();
   const [loading, setLoading] = useState(true);
+
+  
+  
 
   useEffect(() => {
     document.title = 'Audory';

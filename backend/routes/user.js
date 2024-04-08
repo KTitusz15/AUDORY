@@ -1,14 +1,23 @@
-const express = require('express')
+const express = require('express');
+const { loginUser, signupUser, subtractCredits, getUserCredits, addCredits } = require('../controllers/userController');
 
-// controller functions
-const { loginUser, signupUser } = require('../controllers/userController')
 
-const router = express.Router()
+const requireAuth = require('../middleware/requireAuth'); // Importing requireAuth middleware
 
-// login route
-router.post('/login', loginUser)
+const router = express.Router();
 
-// signup route
-router.post('/signup', signupUser)
+// Login route
+router.post('/login', loginUser);
 
-module.exports = router
+// Signup route
+router.post('/signup', signupUser);
+
+// Subtract credits route - Requires authentication
+router.patch('/:user_id/subtract-credits', requireAuth, subtractCredits);
+
+// Add credits route - Requires authentication
+router.patch('/:user_id/add-credits', requireAuth, addCredits);
+
+router.get('/:user_id/credits', getUserCredits)
+
+module.exports = router;

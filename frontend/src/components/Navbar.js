@@ -7,7 +7,6 @@ import logo from '../assets/logo.png';
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
-
   const location = useLocation();
   const isPathPublish = location.pathname === '/publish';
   const isPathFeedback = location.pathname === '/feedback';
@@ -94,22 +93,20 @@ const Navbar = () => {
                         </p>
                       </div>
                       <div className='py-1'>
+                        <p className='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left'>
+                          Feedback credits: <span className='font-semibold'>{user.credits}</span>
+                        </p>
+                      </div>
+                      <div className=''>
                         <a
                           href='/profile'
-                          tabIndex='0'
                           className='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
                           role='menuitem'>
                           Profile
                         </a>
-                        <a
-                          href='/settings'
-                          tabIndex='1'
-                          className='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
-                          role='menuitem'>
-                          Settings
-                        </a>
+                        
                       </div>
-                      <div className='py-1'>
+                      <div className=''>
                         <button
                           onClick={handleClick}
                           tabIndex='3'

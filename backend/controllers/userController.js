@@ -16,7 +16,7 @@ const loginUser = async (req, res) => {
     // create a token
     const token = createToken(user._id)
 
-    res.status(200).json({name: user.name, email, token})
+    res.status(200).json({name: user.name, email, token, _id:user._id, credits: user.credits})
   } catch (error) {
     res.status(400).json({error: error.message})
   }
@@ -32,12 +32,76 @@ const signupUser = async (req, res) => {
     // create a token
     const token = createToken(user._id)
 
-    res.status(200).json({name, email, token})
+    res.status(200).json({name, email, token, _id:user._id, credits: user.credits})
   } catch (error) {
     res.status(400).json({error: error.message})
   }
 }
 
+const getUserCredits = async (req, res) => {
+  const user_id = req.params.user_id;
+
+  // Fetch user from the database
+  const user = await User.findById(user_id);
+
+  if (!user) {
+    res.status(404).json({ error: 'User not found' });
+    return;
+  }
+
+  // Respond with user's credits
+  res.status(200).json({ credits: user.credits });
+};
+
+// Subtract 10 credits from the user
+const subtractCredits = async (req, res) => {
+  const user_id = req.params.user_id; // Assuming you pass userId in the URL
+
+  try {
+    // Find the user by ID
+    const user = await User.findById(user_id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Subtract 10 credits from the user's credits field
+    user.credits -= 10;
+
+    // Save the updated user
+    await user.save();
+
+    // Respond with the updated user
+    res.status(200).json({ message: "Credits subtracted successfully", user });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// add 10 credits to the user
+const addCredits = async (req, res) => {
+  const user_id = req.params.user_id; // Assuming you pass userId in the URL
+
+  try {
+    // Find the user by ID
+    const user = await User.findById(user_id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Subtract 10 credits from the user's credits field
+    user.credits += 10;
+
+    // Save the updated user
+    await user.save();
+
+    // Respond with the updated user
+    res.status(200).json({ message: "Credits added successfully", user });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 
-module.exports = { signupUser, loginUser }
+module.exports = { signupUser, loginUser, subtractCredits, addCredits, getUserCredits }

@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePostsContext } from '../hooks/usePostsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
+
 const PostForm = () => {
   const { dispatch } = usePostsContext();
-  const { user } = useAuthContext();
+  const { user, dispatch: authDispatch } = useAuthContext();
+ 
 
   const [title, setTitle] = useState('');
   const [genre, setGenre] = useState('');
@@ -15,8 +17,18 @@ const PostForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const handleNextStep = () => {
-    setCurrentStep(currentStep + 1);
+    if (user.credits >= 10) {
+      setCurrentStep(currentStep + 1);
+    }
   };
+
+  useEffect(() => {
+    if (user && user.credits < 10) {
+      setError('You dont have enough Feedback credits to post');
+    } else {
+      setError(null);
+    }
+  }, [user]);
 
   const handlePrevStep = () => {
     setCurrentStep(currentStep - 1);
@@ -29,36 +41,68 @@ const PostForm = () => {
       setError('You must be logged in');
       return;
     }
+    
+    // Subtract 2 credits from the user's account
+    try {
+      const response = await fetch(`/api/user/${user._id}/subtract-credits`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        setError(json.error);
+        return;
+      }else{
+        authDispatch({ type: 'SET_CREDITS', payload: json.user.credits });
+        
+      }
+      
+    } catch (error) {
+      console.error('Error subtracting credits:', error);
+      setError('An error occurred while subtracting credits');
+      return;
+    }
 
     const post = { title, genre, link, desc };
 
-    const response = await fetch('/api/posts', {
-      method: 'POST',
-      body: JSON.stringify(post),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    const json = await response.json();
+    try {
+      const response = await fetch('/api/posts', {
+        method: 'POST',
+        body: JSON.stringify(post),
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
 
-    if (!response.ok) {
-      setError(json.error);
-      if (Array.isArray(json.emptyFields)) {
-        setEmptyFields(json.emptyFields);
+      const json = await response.json();
+
+      if (!response.ok) {
+        setError(json.error);
+        if (Array.isArray(json.emptyFields)) {
+          setEmptyFields(json.emptyFields);
+        } else {
+          setEmptyFields([]);
+        }
       } else {
+        setTitle('');
+        setGenre('');
+        setLink('');
+        setDesc('');
+        setError(null);
         setEmptyFields([]);
+        
+        dispatch({ type: 'CREATE_POST', payload: json });
+        window.location.href = '/feedback';
       }
-    }
-    if (response.ok) {
-      setTitle('');
-      setGenre('');
-      setLink('');
-      setDesc('');
-      setError(null);
-      setEmptyFields([]);
-      dispatch({ type: 'CREATE_POST', payload: json });
-      window.location.href = "/feedback"
+    } catch (error) {
+      console.error('Error submitting post:', error);
+      setError('An error occurred while submitting the post');
     }
   };
 
@@ -156,7 +200,9 @@ const PostForm = () => {
             currentStep !== 3 ? 'hidden' : ''
           } justify-center items-center gap-6`}
           id='phaseLink'>
-          <div className='md:text-2xl font-semibold mb-6'>Provide a link to your demo</div>
+          <div className='md:text-2xl font-semibold mb-6'>
+            Provide a link to your demo
+          </div>
           <input
             type='text'
             onChange={(e) => setLink(e.target.value)}
@@ -203,9 +249,10 @@ const PostForm = () => {
             currentStep !== 4 ? 'hidden' : ''
           } justify-center items-center gap-2 sm:gap-6`}
           id='phaseDesc'>
-          <div className='md:text-2xl font-semibold mb-6'>How would you describe this idea?</div>
+          <div className='md:text-2xl font-semibold mb-6'>
+            How would you describe this idea?
+          </div>
           <textarea
-            
             onChange={(e) => setDesc(e.target.value)}
             value={desc}
             rows={5}
@@ -229,15 +276,14 @@ const PostForm = () => {
             </svg>
           </div>
           <button className='relative inline-flex group'>
-              <div className='absolute transition-all duration-500 opacity-70 -inset-px bg-gradient-to-r from-[#7338c6] via-[#1432b8] to-[#41a2c2] rounded-md blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200'></div>
-              <span
-                
-                title='Upload your idea'
-                className='relative inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white transition-all duration-200 bg-gray-900 rounded-xl '
-                role='button'>
-                Upload your idea
-              </span>
-            </button>
+            <div className='absolute transition-all duration-500 opacity-70 -inset-px bg-gradient-to-r from-[#7338c6] via-[#1432b8] to-[#41a2c2] rounded-md blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200'></div>
+            <span
+              title='Upload your idea'
+              className='relative inline-flex items-center justify-center px-8 py-4 text-sm font-semibold text-white transition-all duration-200 bg-gray-900 rounded-xl '
+              role='button'>
+              Upload your idea
+            </span>
+          </button>
         </div>
       </form>
 
@@ -252,7 +298,6 @@ const PostForm = () => {
         ))}
       </div>
       {error && <div className='text-red-500 my-3'>{error}</div>}
-      
     </div>
   );
 };

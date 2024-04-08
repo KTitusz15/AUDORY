@@ -5,7 +5,7 @@ import { usePostsContext } from "../hooks/usePostsContext"
 
 const CommentForm = ({post_id}) => {
   const { dispatch } = useCommentsContext()
-  const { user } = useAuthContext()
+  const { user, dispatch: authDispatch } = useAuthContext()
 
   const [comments, setComment] = useState('')
   const [error, setError] = useState(null)
@@ -17,6 +17,32 @@ const CommentForm = ({post_id}) => {
     if (!user) {
       setError('You must be logged in')
       return
+    }
+
+    // Add 10 credits to the user's account
+    try {
+      const response = await fetch(`/api/user/${user._id}/add-credits`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        setError(json.error);
+        return;
+      }else{
+        authDispatch({ type: 'SET_CREDITS', payload: json.user.credits });
+        
+      }
+      
+    } catch (error) {
+      console.error('Error adding credits:', error);
+      setError('An error occurred while adding credits');
+      return;
     }
 
     const comment = { comments }
