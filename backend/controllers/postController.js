@@ -2,16 +2,7 @@ const Post = require('../models/postModel');
 const User = require('../models/userModel');
 const mongoose = require('mongoose');
 
-// Function to get user name by user ID
-const getUserName = async (userId) => {
-  try {
-    const user = await User.findById(userId);
-    return user.name;
-  } catch (error) {
-    console.error("Error retrieving user name:", error);
-    return null;
-  }
-};
+
 
 // get all posts
 const getPosts = async (req, res) => {
@@ -20,13 +11,7 @@ const getPosts = async (req, res) => {
   try {
     const posts = await Post.find().sort({ createdAt: -1 });
 
-    // Map over each post to get the corresponding user's name
-    const postsWithUserNames = await Promise.all(posts.map(async (post) => {
-      const userName = await getUserName(post.user_id);
-      return { ...post.toObject(), userName };
-    }));
-
-    res.status(200).json(postsWithUserNames);
+    res.status(200).json(posts);
   } catch (error) {
     console.error("Error retrieving posts:", error);
     res.status(500).json({ error: 'Internal server error' });
@@ -34,7 +19,7 @@ const getPosts = async (req, res) => {
 };
 
 const getPostsByUserId = async (req, res) => {
-  const user_id = req.user._id; // Assuming user_id is in req.body
+  const user_id = req.params.user_id; // Assuming user_id is in req.body
 
   try {
     const posts = await Post.find({ user_id }).sort({ createdAt: -1 });
@@ -62,12 +47,8 @@ const getPost = async (req, res) => {
     return res.status(404).json({ error: 'No such post' });
   }
 
-  // Get user name by user ID
-  const userName = await getUserName(post.user_id);
-
-  // Include user name in the response
-  const postWithUserName = { ...post.toObject(), userName };
-  res.status(200).json(postWithUserName);
+  
+  res.status(200).json(post);
 };
 
 // create new post
@@ -97,8 +78,10 @@ const createPost = async (req, res) => {
   // add doc to db
   try {
     const user_id = req.user._id;
+    const name = req.user.name
     const post = await Post.create({
       title,
+      name,
       genre,
       link,
       desc,

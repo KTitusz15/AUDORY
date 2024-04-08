@@ -23,7 +23,7 @@ router.get('/', getPosts)
 router.get('/:id', getPost)
 
 //GET all posts with user id
-router.get('/user/:username', getPostsByUserId)
+router.get('/user/:user_id', getPostsByUserId)
 
 // POST a new post
 router.post('/', createPost)

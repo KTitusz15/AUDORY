@@ -40,7 +40,7 @@ function App() {
               element={user || sessionStorage.getItem('loggedIn') === 'true' ? <Publish /> : <Navigate to='/login' />}
             />
             <Route
-              path='/profile'
+              path='/post/user/:user_id/:name'
               element={user || sessionStorage.getItem('loggedIn') === 'true' ? <Profile /> : <Navigate to='/login' />}
             />
             <Route

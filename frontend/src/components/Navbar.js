@@ -98,12 +98,12 @@ const Navbar = () => {
                         </p>
                       </div>
                       <div className=''>
-                        <a
-                          href='/profile'
+                      <Link to={`/post/user/${user._id}/${user.name}`}
+                          
                           className='text-white flex justify-between w-full px-4 py-2 text-sm leading-5 text-left transition-colors duration-300 hover:bg-gray-600/30'
                           role='menuitem'>
                           Profile
-                        </a>
+                          </Link>
                         
                       </div>
                       <div className=''>

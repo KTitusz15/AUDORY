@@ -139,7 +139,8 @@ const PostDetails = ({ post }) => {
               {post.title}
             </p>
             <p className='text-sm font-light sm:text-sm md:text-lg lg:text-xl xl:text-2xl'>
-              {post.userName}
+            <Link to={`/post/user/${post.user_id}/${post.name}`}>{post.name}</Link>
+
             </p>
             <p className='text-xs font-extralight opacity-70 sm:text-sm md:text-sm lg:text-lg'>
               {post.genre}
@@ -195,7 +196,7 @@ const PostDetails = ({ post }) => {
           </div>
 
           {/* Delete */}
-          {user.name == post.userName && (
+          {user._id == post.user_id && (
             <span
               className='active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110 material-symbols-rounded hover:text-red-500'
               onClick={handleDelete}>
