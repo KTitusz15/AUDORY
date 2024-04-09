@@ -58,10 +58,9 @@ const Post = () => {
       <div className='background'></div>
       <Navbar />
       <BottomNavbar />
-      {/* <BubbleNav /> */}
-      <div className='flex flex-col sm:p-10'>
-        <div className='flex flex-col self-center p-5 mb-24 mt-24 bg-gray-500 shadow-[0px_0px_10px_0px_#1e1b4b] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-10 border border-gray-700 text-white w-11/12'>
-          <div className='mb-5 text-2xl md:text-3xl lg:text-4xl'>Post</div>
+      
+      <div className='flex flex-col sm:p-10 px-5 pb-24 pt-20 sm:pt-24 sm:pb-5'>
+        
           
 
           {posts &&
@@ -74,7 +73,7 @@ const Post = () => {
             </LikesContextProvider>
           </CommentsContextProvider>
           }
-        </div>
+        
       </div>
     </div>
   );

@@ -62,11 +62,13 @@ const Profile = () => {
                 <span>{user.email}</span>
               </div>
             </div>
-          ) : <div className='flex flex-col px-5'>
-          <div className='mb-5 text-3xl md:text-4xl lg:text-6xl font-semibold'>
-            {name}
-          </div>
-        </div>}
+          ) : (
+            <div className='flex flex-col px-5'>
+              <div className='mb-5 text-3xl md:text-4xl lg:text-6xl font-semibold'>
+                {name}
+              </div>
+            </div>
+          )}
           <hr class='my-6 h-0.5 border-t-0 bg-white/10' />
           {user && user._id === user_id ? (
             <div className='my-5 text-2xl md:text-3xl lg:text-4xl'>
@@ -87,6 +89,19 @@ const Profile = () => {
                 </LikesContextProvider>
               </CommentsContextProvider>
             ))}
+          {posts == '' ? (
+            <div className='flex flex-col gap-1 sm:flex-row justify-center items-center'>
+              <div className='text-gray-400 text-center'>
+                It's empty in here. 
+                
+              </div>
+              <Link to='/publish' className='text-indigo-200 transition-all hover:text-indigo-100 hover:underline'>
+                Upload something
+              </Link>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </div>

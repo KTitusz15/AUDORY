@@ -36,8 +36,8 @@ const Home = () => {
       <div className='max-w-[85rem] pt-24 mx-auto px-4 sm:px-6 lg:px-8'>
         {/* <!-- Grid --> */}
         <div className='grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center'>
-          <div>
-            <h1 className='block text-3xl font-bold text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white'>
+          <div className='flex flex-col'>
+            <h1 className='block text-3xl font-bold mt-5 md:mt-0 text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white'>
               Start your musical journey with{' '}
               <span className='bg-gradient-to-r from-purple-600 to-cyan-600 text-transparent bg-clip-text'>Audory</span>
             </h1>
@@ -46,10 +46,10 @@ const Home = () => {
             </p>
 
             {/* <!-- Buttons --> */}
-            <div className='mt-7 grid gap-3 w-full sm:inline-flex'>
+            <div className='mt-7 self-center md:self-start inline-flex'>
               <Link
                 to='/feedback'
-                className='py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg gradient-mask-r-50 transition-all duration-300 bg-gradient-to-r from-purple-900 to-cyan-800 text-gray-100 hover:translate-x-1 disabled:opacity-50 disabled:pointer-events-none'>
+                className='py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg transition-all duration-300 bg-gradient-to-r from-purple-900 to-cyan-800 text-gray-100 hover:translate-x-1 disabled:opacity-50 disabled:pointer-events-none'>
                 Get started
                 <svg
                   className='flex-shrink-0 size-4'
@@ -72,7 +72,7 @@ const Home = () => {
 
           <div className='relative ms-4'>
             <img
-              className='hidden sm:block w-full object-right overflow-hidden rounded-md hue-rotate-[250deg]'
+              className='hidden md:block w-full object-right overflow-hidden rounded-md hue-rotate-[250deg]'
               src='https://images.unsplash.com/photo-1593975403686-c1e1f1151ab6?q=80&w=2848&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
               alt='Image Description'
             />
@@ -121,6 +121,8 @@ const Home = () => {
         <span className='text-gray-400 text-lg text-center'>Join the community by uploading your own tracks and discover what fellow music enthusiasts think about your creations!</span>
       </div>
 
+
+      
 
 
       <Footer />

@@ -12,6 +12,7 @@ import Comment from './Comment';
 import { Link } from 'react-router-dom';
 
 const PostDetails = ({ post }) => {
+  const location = window.location.href;
   const { dispatch: postDispatch } = usePostsContext();
   const { liked, likes, dispatch: likesDispatch } = useLikesContext();
   const { comments, dispatch: commentDispatch } = useCommentsContext();
@@ -122,16 +123,14 @@ const PostDetails = ({ post }) => {
   
 
   return (
-    <div>
+    <div className='relative'>
       
       <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
         id={`post_${post._id}`}
-        className={`post static flex flex-col justify-center p-5 my-3 bg-black/50 shadow-[0px_0px_10px_0px_#1e1b4b] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-70 border border-gray-700 text-white w-full self-center  ${
-          isExpanded ? 'hidden' : ''
-        }`}>
+        className={`post static flex flex-col justify-between min-h-56 gap-5 p-4 my-3 bg-black/50 shadow-[0px_0px_10px_0px_#1e1b4b] rounded-xl bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-70 border border-gray-700 text-white w-full self-center`}>
         <div className='flex flex-row items-center justify-between'>
           {/* Details */}
           <div className='flex flex-col justify-between gap-0.5 sm:gap-1 md:gap-1 lg:gap-2 xl:gap-6 items-start w-full h-full pl-2 pr-10'>
@@ -151,7 +150,25 @@ const PostDetails = ({ post }) => {
           </div>
         </div>
         {/* Interactions */}
-        <div className='absolute right-0 flex flex-col items-center justify-around gap-4 p-5'>
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-around gap-4 p-5">
+          {/* Play */}
+          <a
+                href={post.link}
+                target='_blank'>
+                <svg
+                  className='hover:fill-white active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110 w-5 h-5'
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='25'
+                  height='25'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='#ffffff'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'>
+                  <polygon points='5 3 19 12 5 21 5 3'></polygon>
+                </svg>
+              </a>
           {/* Comment */}
           <Link to={`/post/${post._id}`}>
             <svg
@@ -164,7 +181,7 @@ const PostDetails = ({ post }) => {
               strokeWidth='2'
               strokeLinecap='round'
               strokeLinejoin='round'
-              className='hover:fill-white active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110'>
+              className='hover:fill-white active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110 w-5 h-5'>
               <path d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'></path>
             </svg>
           </Link>
@@ -174,8 +191,8 @@ const PostDetails = ({ post }) => {
             <svg
               className={
                 liked
-                  ? 'fill-white active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110'
-                  : 'hover:fill-white active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110'
+                  ? 'fill-white active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110 w-5 h-5'
+                  : 'hover:fill-white active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110 w-5 h-5'
               }
               xmlns='http://www.w3.org/2000/svg'
               width='25'
@@ -195,53 +212,17 @@ const PostDetails = ({ post }) => {
             </p>
           </div>
 
-          {/* Delete */}
-          {user._id == post.user_id && (
+          
+        </div>
+        {/* Delete */}
+        {user._id == post.user_id && !location.includes("/feedback") && (
             <span
-              className='active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110 material-symbols-rounded hover:text-red-500'
+              className=' absolute left-0 bottom-0 p-4 active:scale-75 transition-all duration-100 hover:cursor-pointer hover:scale-110 material-symbols-rounded hover:text-red-500'
               onClick={handleDelete}>
               delete
             </span>
           )}
-        </div>
-        {/* Button */}
-        <a
-          target='_blank'
-          href={post.link}
-          className='self-center inline-flex items-center justify-center p-0.5 mt-5 mb-2 me-2 overflow-hidden font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-indigo-900 group-hover:from-purple-600 group-hover:to-indigo-900 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 transition-transform duration-200 hover:scale-105 z-50'>
-          <span className='hidden sm:block text-center relative text-xs sm:text-sm md:text-lg lg:text-xl px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
-            Play on SoundCloud
-          </span>
-          <span className='relative px-5 py-2 text-xs text-center transition-all duration-75 ease-in bg-white rounded-md sm:hidden sm:text-sm md:text-lg lg:text-xl dark:bg-gray-900 group-hover:bg-opacity-0'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              width='30'
-              height='30'
-              viewBox='0 0 24 24'>
-              <defs>
-                <linearGradient
-                  id='gradient'
-                  x1='0%'
-                  y1='0%'
-                  x2='100%'
-                  y2='100%'>
-                  <stop
-                    offset='0%'
-                    style={{ stopColor: '#a434eb' }}
-                  />
-                  <stop
-                    offset='100%'
-                    style={{ stopColor: '#34b1eb' }}
-                  />
-                </linearGradient>
-              </defs>
-              <path
-                d='M7 17.939h-1v-8.068c.308-.231.639-.429 1-.566v8.634zm3 0h1v-9.224c-.229.265-.443.548-.621.857l-.379-.184v8.551zm-2 0h1v-8.848c-.508-.079-.623-.05-1-.01v8.858zm-4 0h1v-7.02c-.312.458-.555.971-.692 1.535l-.308-.182v5.667zm-3-5.25c-.606.547-1 1.354-1 2.268 0 .914.394 1.721 1 2.268v-4.536zm18.879-.671c-.204-2.837-2.404-5.079-5.117-5.079-1.022 0-1.964.328-2.762.877v10.123h9.089c1.607 0 2.911-1.393 2.911-3.106 0-2.233-2.168-3.772-4.121-2.815zm-16.879-.027c-.302-.024-.526-.03-1 .122v5.689c.446.143.636.138 1 .138v-5.949'
-                fill='url(#gradient)'
-              />
-            </svg>
-          </span>
-        </a>
+        
         <p className='text-right text-sm text-gray-400'>
           {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })}
         </p>

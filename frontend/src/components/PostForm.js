@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { usePostsContext } from '../hooks/usePostsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { motion, AnimatePresence } from 'framer-motion';
 
 
 const PostForm = () => {
@@ -111,6 +112,7 @@ const PostForm = () => {
       <form
         className='create'
         onSubmit={handleSubmit}>
+          
         <div
           className={`flex flex-col ${
             currentStep !== 1 ? 'hidden' : ''
@@ -201,7 +203,7 @@ const PostForm = () => {
           } justify-center items-center gap-6`}
           id='phaseLink'>
           <div className='md:text-2xl font-semibold mb-6'>
-            Provide a link to your demo
+            Provide a link to your song
           </div>
           <input
             type='text'
