@@ -28,7 +28,7 @@ const Post = () => {
   useEffect(() => {
     document.title = 'Audory';
     const fetchPosts = async () => {
-      const response = await fetch(`/api/posts/${post_id}`, {
+      const response = await fetch(`https://audory-api.vercel.app/api/posts/${post_id}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const json = await response.json();

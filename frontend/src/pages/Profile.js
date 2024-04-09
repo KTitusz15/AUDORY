@@ -30,7 +30,7 @@ const Profile = () => {
     document.title = 'Audory';
 
     const fetchPosts = async () => {
-      const response = await fetch(`/api/posts/user/${user_id}`, {
+      const response = await fetch(`https://audory-api.vercel.app/api/posts/user/${user_id}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       const json = await response.json();
