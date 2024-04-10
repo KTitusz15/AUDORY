@@ -18,7 +18,7 @@ const app = express();
 app.use(cors());
 // Allow specific origin(s)
 app.use(cors({
-  origin: 'https://audory-api.vercel.app'
+  origin: 'https://audory.vercel.app'
 }));
 
 app.use(express.json());
