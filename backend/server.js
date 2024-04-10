@@ -13,11 +13,14 @@ const commentRoutes = require('./routes/comments');
 const app = express();
 
 // middleware
+
+// Allow all origins
+app.use(cors());
+// Allow specific origin(s)
 app.use(cors({
-  origin: ["https://audory-api.vercel.app"],
-  methods: ["POST", "GET", "PATCH", "UPDATE", "DELETE"],
-  credentials: true
+  origin: 'https://audory.vercel.app'
 }));
+
 app.use(express.json());
 
 app.use((req, res, next) => {
