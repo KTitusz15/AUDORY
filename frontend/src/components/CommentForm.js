@@ -47,7 +47,7 @@ const CommentForm = ({post_id}) => {
 
     const comment = { comments }
     const name = user.name
-    const response = await fetch(`/api/comments/${post_id}`, {
+    const response = await fetch(`https://audory-api.vercel.app/api/comments/${post_id}`, {
       method: 'POST',
       body: JSON.stringify({comment, name}),
       headers: {
