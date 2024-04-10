@@ -21,7 +21,5 @@
     "validator": "^13.7.0",
     "vercel": "^33.7.0"
   },
-  "engines": {
-    "node": "21.4.0"
-  }
+  "engines": { "node": "20.x" }
 }
