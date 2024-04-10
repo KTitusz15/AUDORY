@@ -13,14 +13,9 @@ const commentRoutes = require('./routes/comments');
 const app = express();
 
 // middleware
-
-// Allow all origins
-app.use(cors());
-// Allow specific origin(s)
 app.use(cors({
   origin: 'https://audory.vercel.app'
 }));
-
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -33,6 +28,11 @@ app.use('/api/posts', postRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/likes', likeRoutes);
 app.use('/api/comments', commentRoutes);
+
+// Root path handler
+app.get('/', (req, res) => {
+  res.send('Welcome to the Audory API');
+});
 
 // connect to db
 mongoose
