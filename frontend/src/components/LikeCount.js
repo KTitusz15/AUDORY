@@ -8,7 +8,7 @@ const LikeCount = ({ postId }) => {
   useEffect(() => {
     const fetchLikeCount = async () => {
       try {
-        const response = await fetch(`/api/likes/count/${postId}`, {
+        const response = await fetch(`https://audory-api.vercel.app/api/likes/count/${postId}`, {
             headers: { 'Authorization': `Bearer ${user.token}` },
           });
         

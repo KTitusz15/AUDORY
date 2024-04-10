@@ -21,7 +21,7 @@ const CommentForm = ({post_id}) => {
 
     // Add 10 credits to the user's account
     try {
-      const response = await fetch(`/api/user/${user._id}/add-credits`, {
+      const response = await fetch(`https://audory-api.vercel.app/api/user/${user._id}/add-credits`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

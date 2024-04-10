@@ -26,7 +26,7 @@ const PostDetails = ({ post }) => {
     const fetchPostLikeStatus = async () => {
       if (!user) return;
       try {
-        const response = await fetch(`/api/likes/check/${post._id}`, {
+        const response = await fetch(`https://audory-api.vercel.app/api/likes/check/${post._id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const PostDetails = ({ post }) => {
 
     const fetchLikeCount = async () => {
       try {
-        const response = await fetch(`/api/likes/count/${post._id}`, {
+        const response = await fetch(`https://audory-api.vercel.app/api/likes/count/${post._id}`, {
           headers: { Authorization: `Bearer ${user.token}` },
         });
 
@@ -69,7 +69,7 @@ const PostDetails = ({ post }) => {
     try {
       let updatedLikes;
       if (!liked) {
-        const response = await fetch(`/api/likes/${post._id}`, {
+        const response = await fetch(`https://audory-api.vercel.app/api/likes/${post._id}`, {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -83,7 +83,7 @@ const PostDetails = ({ post }) => {
           likesDispatch({ type: 'CREATE_LIKE', payload: json });
         }
       } else {
-        const response = await fetch(`/api/likes/${post._id}`, {
+        const response = await fetch(`https://audory-api.vercel.app/api/likes/${post._id}`, {
           method: 'DELETE',
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -107,7 +107,7 @@ const PostDetails = ({ post }) => {
       return;
     }
 
-    const response = await fetch('/api/posts/' + post._id, {
+    const response = await fetch('https://audory-api.vercel.app/api/posts/' + post._id, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${user.token}`,

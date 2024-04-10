@@ -16,7 +16,7 @@ const Comment = ({ comment }) => {
 
     // Remove 10 credits from the user's account
     try {
-      const response = await fetch(`/api/user/${user._id}/subtract-credits`, {
+      const response = await fetch(`https://audory-api.vercel.app/api/user/${user._id}/subtract-credits`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

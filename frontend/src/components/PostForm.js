@@ -45,7 +45,7 @@ const PostForm = () => {
     
     // Subtract 2 credits from the user's account
     try {
-      const response = await fetch(`/api/user/${user._id}/subtract-credits`, {
+      const response = await fetch(`https://audory-api.vercel.app/api/user/${user._id}/subtract-credits`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const PostForm = () => {
     const post = { title, genre, link, desc };
 
     try {
-      const response = await fetch('/api/posts', {
+      const response = await fetch('https://audory-api.vercel.app/api/posts', {
         method: 'POST',
         body: JSON.stringify(post),
         headers: {
