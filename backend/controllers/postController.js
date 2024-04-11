@@ -53,7 +53,7 @@ const getPost = async (req, res) => {
 
 // create new post
 const createPost = async (req, res) => {
-  const { title, genre, link, desc } = req.body;
+  const { title, genre, link, desc, name } = req.body;
 
   let emptyFields = [];
 
@@ -78,7 +78,7 @@ const createPost = async (req, res) => {
   // add doc to db
   try {
     const user_id = req.user._id;
-    const name = req.user.name
+    
     const post = await Post.create({
       title,
       name,

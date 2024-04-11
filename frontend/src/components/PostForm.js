@@ -68,8 +68,8 @@ const PostForm = () => {
       setError('An error occurred while subtracting credits');
       return;
     }
-    
-    const post = { title, genre, link, desc };
+    const name = user.name
+    const post = { title, genre, link, desc, name };
 
     try {
       const response = await fetch('https://audory-api.vercel.app/api/posts', {
