@@ -3,11 +3,9 @@ import { usePostsContext } from '../hooks/usePostsContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
-
 const PostForm = () => {
   const { dispatch } = usePostsContext();
   const { user, dispatch: authDispatch } = useAuthContext();
- 
 
   const [title, setTitle] = useState('');
   const [genre, setGenre] = useState('');
@@ -42,33 +40,8 @@ const PostForm = () => {
       setError('You must be logged in');
       return;
     }
-    
-    // Subtract 2 credits from the user's account
-    try {
-      const response = await fetch(`https://audory-api.vercel.app/api/user/${user._id}/subtract-credits`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
 
-      const json = await response.json();
-
-      if (!response.ok) {
-        setError(json.error);
-        return;
-      }else{
-        authDispatch({ type: 'SET_CREDITS', payload: json.user.credits });
-        
-      }
-      
-    } catch (error) {
-      console.error('Error subtracting credits:', error);
-      setError('An error occurred while subtracting credits');
-      return;
-    }
-    const name = user.name
+    const name = user.name;
     const post = { title, genre, link, desc, name };
 
     try {
@@ -97,8 +70,36 @@ const PostForm = () => {
         setDesc('');
         setError(null);
         setEmptyFields([]);
-        
+
         dispatch({ type: 'CREATE_POST', payload: json });
+
+        // Subtract 2 credits from the user's account
+        try {
+          const response = await fetch(
+            `https://audory-api.vercel.app/api/user/${user._id}/subtract-credits`,
+            {
+              method: 'PATCH',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${user.token}`,
+              },
+            }
+          );
+
+          const json = await response.json();
+
+          if (!response.ok) {
+            setError(json.error);
+            return;
+          } else {
+            authDispatch({ type: 'SET_CREDITS', payload: json.user.credits });
+          }
+        } catch (error) {
+          console.error('Error subtracting credits:', error);
+          setError('An error occurred while subtracting credits');
+          return;
+        }
+        
         window.location.href = '/feedback';
       }
     } catch (error) {
@@ -112,7 +113,6 @@ const PostForm = () => {
       <form
         className='create'
         onSubmit={handleSubmit}>
-          
         <div
           className={`flex flex-col ${
             currentStep !== 1 ? 'hidden' : ''

@@ -37,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
             },
           });
           const json = await response.json();
-          console.log(json);
+          
           if (response.ok) {
             dispatch({ type: 'SET_CREDITS', payload: json.credits });
           } else {
