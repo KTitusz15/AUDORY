@@ -68,7 +68,7 @@ const PostForm = () => {
       setError('An error occurred while subtracting credits');
       return;
     }
-
+    
     const post = { title, genre, link, desc };
 
     try {

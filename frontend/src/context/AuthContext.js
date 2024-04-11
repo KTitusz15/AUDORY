@@ -30,7 +30,7 @@ export const AuthContextProvider = ({ children }) => {
     const fetchUserCredits = async () => {
       if (user) {
         try {
-          const response = await fetch(`/api/user/${user._id}/credits`, {
+          const response = await fetch(`https://audory-api.vercel.app/api/user/${user._id}/credits`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${user.token}`,
