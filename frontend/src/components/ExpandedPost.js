@@ -134,6 +134,7 @@ const ExpandedPost = ({ post }) => {
 
     if (response.ok) {
       postDispatch({ type: 'DELETE_POST', payload: json });
+      window.location.href = "/feedback"
     }
   };
 
