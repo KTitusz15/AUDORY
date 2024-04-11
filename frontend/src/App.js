@@ -14,7 +14,7 @@ import Loading from './pages/Loading';
 
 function App() {
   const { user } = useAuthContext();
-  console.log("User:", user);
+  
 
   // Check if user is logged in and store in session storage
   useEffect(() => {
