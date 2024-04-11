@@ -31,7 +31,7 @@ const Navbar = () => {
                 className='h-8 rounded-full me-3'
                 alt='Audory Logo'
               />
-              <span className='self-center text-xl font-semibold sm:text-3xl whitespace-nowrap dark:text-white'>
+              <span className='self-center text-xl font-semibold sm:text-3xl whitespace-nowrap text-white'>
                 Audory
               </span>
             </Link>

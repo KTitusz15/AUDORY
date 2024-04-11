@@ -81,7 +81,7 @@ const CommentForm = ({post_id}) => {
         <div className="flex flex-row items-center p-3">
           <div>
             <textarea name="comment" id="comment" onChange={(e) => setComment(e.target.value)}
-              value={comments} cols="150" rows="3" placeholder="Write down your thoughts" className={emptyFields.includes('comment') ? 'error' : 'resize-y bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-900 focus:border-indigo-900 block w-full p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-900 dark:focus:border-indigo-900'}></textarea>
+              value={comments} cols="150" rows="3" placeholder="Write down your thoughts" className={emptyFields.includes('comment') ? 'error' : 'resize-y border text-sm rounded-lg block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-indigo-900 focus:border-indigo-900'}></textarea>
           </div>
 
           <div>

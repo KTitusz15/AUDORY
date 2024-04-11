@@ -37,11 +37,11 @@ const Home = () => {
         {/* <!-- Grid --> */}
         <div className='grid md:grid-cols-2 gap-4 md:gap-8 xl:gap-20 md:items-center'>
           <div className='flex flex-col'>
-            <h1 className='block text-3xl font-bold mt-5 md:mt-0 text-gray-800 sm:text-4xl lg:text-6xl lg:leading-tight dark:text-white'>
+            <h1 className='block text-3xl font-bold mt-5 md:mt-0  sm:text-4xl lg:text-6xl lg:leading-tight text-white'>
               Start your musical journey with{' '}
               <span className='bg-gradient-to-r from-purple-600 to-cyan-600 text-transparent bg-clip-text'>Audory</span>
             </h1>
-            <p className='mt-3 text-lg text-gray-800 dark:text-gray-400'>
+            <p className='mt-3 text-lg  text-gray-400'>
               Share your ideas with the community and get feedback on your music
             </p>
 

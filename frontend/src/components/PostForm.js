@@ -99,7 +99,7 @@ const PostForm = () => {
           setError('An error occurred while subtracting credits');
           return;
         }
-        
+
         window.location.href = '/feedback';
       }
     } catch (error) {
@@ -127,7 +127,7 @@ const PostForm = () => {
             value={title}
             className={`${
               emptyFields.includes('title') ? 'error' : ''
-            } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-900 focus:border-indigo-900 block w-8/12 mx-auto p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-900 dark:focus:border-indigo-900`}
+            }  border  text-sm rounded-lg block w-8/12 mx-auto p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-indigo-900 focus:border-indigo-900`}
           />
           {currentStep === 1 && (
             <div onClick={handleNextStep}>
@@ -162,7 +162,7 @@ const PostForm = () => {
             value={genre}
             className={`${
               emptyFields.includes('genre') ? 'error' : ''
-            } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-900 focus:border-indigo-900 block w-full p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-900 dark:focus:border-indigo-900`}
+            } border text-sm rounded-lg block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-indigo-900 focus:border-indigo-900`}
           />
           <div onClick={handlePrevStep}>
             <svg
@@ -211,7 +211,7 @@ const PostForm = () => {
             value={link}
             className={`${
               emptyFields.includes('link') ? 'error' : ''
-            } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-900 focus:border-indigo-900 block w-full p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-900 dark:focus:border-indigo-900`}
+            } border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-indigo-900 focus:border-indigo-900`}
           />
           <div onClick={handlePrevStep}>
             <svg
@@ -260,7 +260,7 @@ const PostForm = () => {
             rows={5}
             className={`${
               emptyFields.includes('desc') ? 'error' : ''
-            } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-900 focus:border-indigo-900 block w-full p-2.5 dark:bg-gray-900 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-900 dark:focus:border-indigo-900 resize-none row-auto`}
+            }  border  text-sm rounded-lg  block w-full p-2.5 bg-gray-900 border-gray-600 placeholder-gray-400 text-white focus:ring-indigo-900 focus:border-indigo-900 resize-none row-auto`}
           />
           <div onClick={handlePrevStep}>
             <svg

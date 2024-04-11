@@ -48,7 +48,7 @@ const BottomNavbar = () => {
           
           className='inline-flex flex-col items-center justify-center px-5 rounded-e-full'>
           <svg
-            className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 '
+            className='w-5 h-5 mb-1 text-gray-400 '
             aria-hidden='true'
             xmlns='http://www.w3.org/2000/svg'
             fill='currentColor'
@@ -61,7 +61,7 @@ const BottomNavbar = () => {
           
           className='inline-flex flex-col items-center justify-center px-5 rounded-e-full'>
           <svg
-            className='w-5 h-5 mb-1 text-gray-500 dark:text-gray-400 '
+            className='w-5 h-5 mb-1 text-gray-400 '
             aria-hidden='true'
             xmlns='http://www.w3.org/2000/svg'
             fill='currentColor'

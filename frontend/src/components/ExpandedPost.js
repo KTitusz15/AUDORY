@@ -168,7 +168,7 @@ const ExpandedPost = ({ post }) => {
               </svg>
             </Link>
 
-            <div className='flex flex-row items-center justify-between'>
+            <div className='flex flex-row items-center justify-between mb-28'>
               {/* Details */}
               <div className='flex flex-col justify-between gap-0.5 sm:gap-1 md:gap-1 lg:gap-2 xl:gap-6 items-start w-full h-full pl-2 pr-10'>
                 <p className='text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl'>
