@@ -42,9 +42,9 @@ const Signup = () => {
         <h1 className="type-login line-clamp-2 font-bold text-white md:text-xl lg:text-2xl xl:text-4xl w-[max-content] font-mono"></h1>
         </div>
       </div>
-
+      <div className='background-login'></div>
       <div className='flex h-full md:w-1/2 justify-center items-center'>
-        <div className='background-login'></div>
+        
         <form
           class='px-10 lg:w-3/4 xl:2/4'
           onSubmit={handleSubmit}>
