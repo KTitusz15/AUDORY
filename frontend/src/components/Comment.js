@@ -40,7 +40,7 @@ const Comment = ({ comment }) => {
       return;
     }
 
-    const response = await fetch('/api/comments/' + comment._id, {
+    const response = await fetch('https://audory-api.vercel.app/api/comments/' + comment._id, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -61,7 +61,7 @@ const Comment = ({ comment }) => {
     // Handle saving the edited comment
     // Send a request to your backend API to update the comment
     try {
-      const response = await fetch(`/api/comments/${comment._id}`, {
+      const response = await fetch(`https://audory-api.vercel.app/api/comments/${comment._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

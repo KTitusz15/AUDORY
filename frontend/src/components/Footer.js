@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const Footer = () => {
+  const { user } = useAuthContext();
+
   return (
     <footer class='mb-24 sm:mb-4 rounded-lg shadow bg-gray-900/30 m-4 mt-10 backdrop-blur-lg border border-gray-800'>
       <div class='w-full max-w-screen-xl mx-auto p-4 md:py-8'>
@@ -33,7 +36,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to='/profile'
+                to={`/post/user/${user._id}/${user.name}`}
                 class='hover:underline me-4 md:me-6'>
                 Profile
               </Link>
