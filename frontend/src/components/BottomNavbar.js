@@ -10,7 +10,7 @@ const BottomNavbar = () => {
     <div className='sm:hidden fixed z-50 w-8/12 h-16 max-w-lg -translate-x-1/2 bottom-4 left-1/2 bg-black shadow-[0px_0px_10px_0px_#1e1b4b] rounded-2xl bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-80 border border-gray-700'>
       <div className='grid h-full max-w-lg grid-cols-3 mx-auto'>
         <a
-          href='/'
+          href='/feedback'
           className='inline-flex flex-col items-center justify-center px-5 rounded-s-full group'>
           <svg
             className='w-5 h-5 mb-1 text-gray-400'

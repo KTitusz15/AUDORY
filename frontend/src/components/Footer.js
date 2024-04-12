@@ -35,11 +35,16 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link
+              {user && (<Link
                 to={`/post/user/${user._id}/${user.name}`}
                 class='hover:underline me-4 md:me-6'>
                 Profile
-              </Link>
+              </Link>)}
+              {!user && (<Link
+                to={`/login`}
+                class='hover:underline me-4 md:me-6'>
+                Profile
+              </Link>)}
             </li>
           </ul>
         </div>
