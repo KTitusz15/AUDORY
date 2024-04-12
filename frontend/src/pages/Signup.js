@@ -43,7 +43,7 @@ const Signup = () => {
         </div>
       </div>
 
-      <div className='flex h-full md:w-1/2 justify-center py-10 items-center'>
+      <div className='flex h-full md:w-1/2 justify-center items-center'>
         <div className='background-login'></div>
         <form
           class='px-10 lg:w-3/4 xl:2/4'

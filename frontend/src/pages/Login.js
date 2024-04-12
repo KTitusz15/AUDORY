@@ -31,7 +31,7 @@ const Login = () => {
         </div>
       </div>
 
-      <div className='flex flex-col h-screen md:w-1/2 justify-center py-10 items-center'>
+      <div className='flex flex-col h-screen md:w-1/2 justify-center items-center'>
       <div className='background-login'></div>
         <form
           className='px-10'
