@@ -30,6 +30,8 @@ export const useLogin = () => {
 
       // update loading state
       setIsLoading(false)
+
+      window.location.pathname = "/feedback"
     }
   }
 

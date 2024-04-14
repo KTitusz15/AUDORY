@@ -30,6 +30,8 @@ export const useSignup = () => {
 
       // update loading state
       setIsLoading(false)
+
+      window.location.pathname = "/feedback"
     }
   }
 
